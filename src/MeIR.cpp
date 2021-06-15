@@ -67,6 +67,10 @@ bool MATCH(uint8_t measured_ticks, uint8_t desired_us)
   return(measured_ticks >= desired_us - (desired_us>>2)-1 && measured_ticks <= desired_us + (desired_us>>2)+1);//判断前后25%的误差
 }
 
+// TODO: This is a massive hack. This function prevents
+// tone.cpp (from the standard Arduino libraries) from compiling.
+// Since we rarely use IR, we will just comment this out.
+/*
 ISR(TIMER_INTR_NAME)
 {
   uint8_t irdata = (uint8_t)digitalRead(2);
@@ -134,7 +138,7 @@ ISR(TIMER_INTR_NAME)
   }
   // irparams.lastTime = new_time;
 }
-
+*/
 /**
  * Alternate Constructor which can call your own function to map the IR to arduino port,
  * no pins are used or initialized here.
